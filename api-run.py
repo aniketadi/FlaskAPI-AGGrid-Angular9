@@ -35,7 +35,7 @@ def get_all_tasks():
     return jsonify(rv)
 
 
-@app.route('/aggrid/', methods=['GET'])
+@app.route('/aggrid', methods=['GET'])
 def get_agGridData():
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM GP_SCENARIOS")

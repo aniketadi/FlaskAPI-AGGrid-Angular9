@@ -28,7 +28,7 @@ export class AppComponent {
         { make: 'Ford', model: 'Mondeo', price: 32000 },
         { make: 'Porsche', model: 'Boxter', price: 72000 }
     ];*/
-  rowData = [
+  rowDataTemplate = [
   {
     _last_updated_by: "TEST",
     _last_updated_on: "Thu, 27 Oct 2016 09:17:27 GMT",
@@ -224,8 +224,10 @@ export class AppComponent {
 ]
 
   apiUrl = 'http://jsonplaceholder.typicode.com/users';
-  gpScenarioApiUrl =  'http://localhost:2424/api/tasks';
+  //gpScenarioApiUrl =  'http://localhost:2424/api/tasks';
+  gpScenarioApiUrl =  'http://localhost:2424/aggrid';
   apiData;
+  rowData;
   gpscenarioData;
   constructor( private http: HttpClient){
 
@@ -249,6 +251,8 @@ export class AppComponent {
     this.http.get(this.gpScenarioApiUrl).subscribe(
       (gpScenariodata) => { console.warn(gpScenariodata)
         this.gpscenarioData = gpScenariodata;
+        this.rowData = gpScenariodata;
+        console.warn("Initialize data")
       }
     )
   }
